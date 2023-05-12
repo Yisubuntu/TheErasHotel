@@ -30,7 +30,8 @@ function createReservacion(req, res){
         id: req.body.id,
         piso: req.body.piso,
         habitacion: req.body.habitacion,
-        fecha: req.body.fecha
+        fecha_inicio: req.body.fecha_inicio,
+        fecha_fin: req.body.fecha_fin
     });
 
     reservacion

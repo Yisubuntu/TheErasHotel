@@ -13,10 +13,14 @@ const reservacionSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    fecha:{
+    fecha_inicio:{
         type: Date,
         required: true
     },
+    fecha_fin:{
+        type: Date,
+        required: true
+    }
 });
 
 module.exports = mongoose.model("Reservacion",reservacionSchema);
