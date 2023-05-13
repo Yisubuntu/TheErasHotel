@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config({path:""})
 const cors = require("cors")
 const express = require("express");
 const mongoose = require("mongoose");
@@ -11,6 +11,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 //Conexión a la BD
+console.log(process.env.DATABASE_URL_CLOUD);
 mongoose.connect(process.env.DATABASE_URL_CLOUD, {useNewUrlParser: true});
 const db = mongoose.connection;
 
