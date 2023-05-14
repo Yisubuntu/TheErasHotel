@@ -9,32 +9,42 @@
     <table>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Fecha de Entrada</th>
-          <th>Fecha de Salida</th>
-          <th>Número de Habitación</th>
+          <th>ID</th>
+          <th>Piso</th>
+          <th>Habitación</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Juan Pérez</td>
-          <td>2023-06-01</td>
-          <td>2023-06-05</td>
-          <td>101</td>
-        </tr>
-        <tr>
-          <td>María Gómez</td>
-          <td>2023-06-02</td>
-          <td>2023-06-06</td>
-          <td>102</td>
-        </tr>
-        <tr>
-          <td>Carlos Rodríguez</td>
-          <td>2023-06-03</td>
-          <td>2023-06-07</td>
-          <td>103</td>
-        </tr>
+      <tbody id="reservaciones">
       </tbody>
     </table>
+
+    <script>
+      const reservacionesTable = document.querySelector("#reservaciones");
+  
+      fetch("/reservaciones")
+        .then(response => {
+          console.log(response);
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          // Construir la tabla con los datos recibidos
+          const rows = data.map((reservacion) => {
+            return `<tr>
+                      <td>${reservacion.id}</td>
+                      <td>${reservacion.piso}</td>
+                      <td>${reservacion.habitacion}</td>
+                      <td>${reservacion.fecha_inicio}</td>
+                      <td>${reservacion.fecha_fin}</td>
+                    </tr>`;
+          });
+          reservacionesTable.innerHTML = rows.join("");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    </script>
   </body>
 </html>
