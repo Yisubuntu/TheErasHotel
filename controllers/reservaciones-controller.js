@@ -8,7 +8,7 @@ function findAllReservaciones(req, res){
         console.log(reservaciones);
         return res.status(200).json({
             error:false,
-            message: "Success",
+            message: "OK",
             code:10,
             data:reservaciones,
         });
@@ -47,7 +47,7 @@ function createReservacion(req, res){
         .catch((error) =>{
             res.status(500).send({
                 error: true,
-                message: "Server down",
+                message: "Error en el servidor",
                 code: 0,
             });
         });
@@ -90,7 +90,7 @@ function deleteReservacion(req,res){
             }
         })
         .catch((error) => {
-            res.status(500).send({message: "Error en el usuario con id ",id});
+            res.status(500).send({message: "Error en la reservacion con id ",id});
         });
 }
 
@@ -112,10 +112,38 @@ function updateReservacion(req,res){
             }
         })
         .catch((error) => {
-            res.status(500).send({message: "Error en la reservacion"});
+            res.status(500).send({message: "Error en el servidor"});
         });
+}
+function findDisponibilidad(req,res){
+    const hab=req.params.habitacion, f_inicio=req.params.fecha_inicio, f_fin=req.params.fecha_fin;
+
+    console.log("\nChecando disponibilidad para habitacion "+hab+"...");
+    Reservacion.findOne({habitacion:hab,$or:[{fecha_fin:{$gt:f_inicio}},{fecha_inicio:{$lt:f_fin}}]})
+    .then((data) => {
+        if(!data){
+            console.log("\nLa habitacion "+hab+" esta disponible para reservar en el intervalo dado");
+            res.status(200)
+            .send({
+                error: false,
+                message: "OK",
+                code: 20,
+            });
+        }else{
+            console.log("\nLa habitacion "+hab+" no esta disponible para reservar durante el intervalo dado");
+            res.send({
+                error: false,
+                message: "Habitacion ocupada para el intervalo dado",
+                code: 20,
+                data: data,
+            });
+        }
+    })
+    .catch((error) => {
+        res.status(500).send({message: "Error en el servidor"});
+    });
 }
 
 module.exports = {
-    findAllReservaciones, createReservacion, findReservacion, deleteReservacion, updateReservacion
+    findAllReservaciones, createReservacion, findReservacion, deleteReservacion, updateReservacion, findDisponibilidad
 };
