@@ -98,7 +98,7 @@ function updateReservacion(req,res){
     const id = req.params.id;
 
     console.log("\nCambiando fecha a la reservacion con id "+id+"...");
-    Reservacion.findOneAndUpdate({id:id},{fecha_inicio:req.body.fecha_inicio, fecha_fin:req.body.fecha_fin})
+    Reservacion.findOneAndUpdate({id:id},{fecha_inicio:req.body.fecha_inicio, fecha_fin:req.body.fecha_fin},{new:true})
         .then((data) => {
             if(!data)
             res
@@ -119,21 +119,21 @@ function findDisponibilidad(req,res){
     const hab=req.body.habitacion, f_inicio=req.body.fecha_inicio, f_fin=req.body.fecha_fin;
 
     console.log("\nChecando disponibilidad para habitacion "+hab+"...");
-    Reservacion.findOne({habitacion:hab,$or:[{fecha_fin:{$gt:f_inicio}},{fecha_inicio:{$lt:f_fin}}]})
+    Reservacion.findOne({habitacion:hab,$and:[{fecha_fin:{$gt:f_inicio}},{fecha_inicio:{$lt:f_fin}}]})
     .then((data) => {
         if(!data){
             console.log("\nLa habitacion "+hab+" esta disponible para reservar en el intervalo dado");
             res.status(200)
             .send({
                 error: false,
-                message: "OK",
+                message: "Habitacion disponible durante el intervalo dado",
                 code: 20,
             });
         }else{
             console.log("\nLa habitacion "+hab+" no esta disponible para reservar durante el intervalo dado");
             res.send({
                 error: false,
-                message: "Habitacion ocupada para el intervalo dado",
+                message: "Habitacion ocupada durante el intervalo dado",
                 code: 20,
                 data: data,
             });
