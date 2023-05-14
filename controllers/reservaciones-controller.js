@@ -39,7 +39,7 @@ function createReservacion(req, res){
         .then((data) => {
             res.status(200).send({
                 error: false,
-                message: "OK",
+                message: "Reserva creada",
                 code: 20,
                 data: data,
             });
