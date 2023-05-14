@@ -6,7 +6,7 @@ router.use(express.static("front-end"));
 
 //Inicio
 router.get("/", (req, res) => {
-  res.redirect("/index.html");
+  res.redirect("/login.html");
 });
 
 //CRUD
