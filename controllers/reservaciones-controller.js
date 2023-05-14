@@ -98,7 +98,7 @@ function updateReservacion(req,res){
     const id = req.params.id;
 
     console.log("\nCambiando fecha a la reservacion con id "+id+"...");
-    Reservacion.findOneAndUpdate({id:id},req.body)
+    Reservacion.findOneAndUpdate({id:id},{fecha_inicio:req.body.fecha_inicio, fecha_fin:req.body.fecha_fin})
         .then((data) => {
             if(!data)
             res
@@ -116,7 +116,7 @@ function updateReservacion(req,res){
         });
 }
 function findDisponibilidad(req,res){
-    const hab=req.params.habitacion, f_inicio=req.params.fecha_inicio, f_fin=req.params.fecha_fin;
+    const hab=req.body.habitacion, f_inicio=req.body.fecha_inicio, f_fin=req.body.fecha_fin;
 
     console.log("\nChecando disponibilidad para habitacion "+hab+"...");
     Reservacion.findOne({habitacion:hab,$or:[{fecha_fin:{$gt:f_inicio}},{fecha_inicio:{$lt:f_fin}}]})
