@@ -2,7 +2,6 @@ const Reservacion = require("../models/reservacion");
 
 //CRUD
 
-
 function findAllReservaciones(req, res){
     Reservacion.find().then((reservaciones) => {
         console.log(reservaciones);
