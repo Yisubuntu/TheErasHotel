@@ -17,6 +17,6 @@ router.delete("/reservaciones/:id", reservacionesController.deleteReservacion);
 router.put("/reservaciones/:id", reservacionesController.updateReservacion);
 
 //Regla de negocio
-router.put("/disponibilidad",reservacionesController.findDisponibilidad);
+router.get("/disponibilidad",reservacionesController.findDisponibilidad);
 
 module.exports = router;
