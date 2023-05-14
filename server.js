@@ -11,7 +11,6 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 //Conexión a la BD
-console.log(process.env.DATABASE_URL_CLOUD);
 mongoose.connect(process.env.DATABASE_URL_CLOUD, {useNewUrlParser: true});
 const db = mongoose.connection;
 
@@ -23,6 +22,7 @@ db.once("open", () => console.log("Conectando a la base de datos"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("front-end"));
 
 //Rutas
 //port = process.env.PORT || 3001;
