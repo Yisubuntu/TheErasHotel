@@ -2,8 +2,9 @@ const express = require("express");
 const usuariosController = require("../controllers/usuarios-controller");
 const reservacionesController = require("../controllers/reservaciones-controller");
 const router = express.Router();
+router.use(express.static("front-end"));
 
-router.get("/index", (req, res) => {
+router.get("/", (req, res) => {
     res.sendFile(__dirname + "/../front-end/templates/index.html");
   });
 

@@ -22,7 +22,6 @@ db.once("open", () => console.log("Conectando a la base de datos"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("front-end"));
 
 //Rutas
 //port = process.env.PORT || 3001;
