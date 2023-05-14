@@ -5,12 +5,9 @@ const router = express.Router();
 router.use(express.static("front-end"));
 
 router.get("/", (req, res) => {
-    res.sendFile(__dirname + "/../front-end/templates/index.html");
+    res.redirect("/index.html");
   });
-
-router.get("/reservaciones", (req, res) => {
-    res.sendFile(__dirname + "/../front-end/templates/reservaciones.html");
-  });
+router.get("/reservaciones",reservacionesController.findAllReservaciones);
 router.post("/reservaciones",reservacionesController.createReservacion);
 router.get("/reservaciones/:id", reservacionesController.findReservacion);
 router.delete("/reservaciones/:id", reservacionesController.deleteReservacion);

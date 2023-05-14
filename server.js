@@ -5,9 +5,7 @@ const mongoose = require("mongoose");
 
 
 //Crear server
-
 const app = express();
-
 const port = process.env.PORT || 4000;
 
 //Conexión a la BD
@@ -23,8 +21,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//Rutas
-//port = process.env.PORT || 3001;
 //Iniciar el servidor
 app.use("/", require("./routes/routes"));
 app.listen(port, () => console.log("El servidor esta escuchando..."));
