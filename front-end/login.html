@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The Eras Hotel: Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('images/login-bg.png');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        input[type='text'],
+        input[type='password'] {
+            border: 1px solid #182145;
+            border-radius: 10px;
+            background: #D8DCEB;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            color: #182145;
+        }
+
+        input[type='text']::placeholder,
+        input[type='password']::placeholder {
+            color: #999;
+        }
+
+        input[type='submit'] {
+            background-color: #182145;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.5rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        a {
+            color: #000;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <input type="text" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Contraseña">
+            <input type="submit" value="Ingresar">
+        </form>
+        <a href="crear-usuario.html">Crear usuario</a>
+    </div>
+</body>
+
+</html>
