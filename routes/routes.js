@@ -4,10 +4,12 @@ const reservacionesController = require("../controllers/reservaciones-controller
 const router = express.Router();
 
 router.get("/index", (req, res) => {
-    res.sendFile(__dirname + "/../front-end/reservaciones.html");
+    res.sendFile(__dirname + "/../front-end/templates/index.html");
   });
 
-router.get("/reservaciones", reservacionesController.findAllReservaciones);
+router.get("/reservaciones", (req, res) => {
+    res.sendFile(__dirname + "/../front-end/templates/reservaciones.html");
+  });
 router.post("/reservaciones",reservacionesController.createReservacion);
 router.get("/reservaciones/:id", reservacionesController.findReservacion);
 router.delete("/reservaciones/:id", reservacionesController.deleteReservacion);
