@@ -8,13 +8,86 @@ body {
 }
 
 .container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    height: 33vh;
+    width: 100%;
+}
+
+.top-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 30vh;
+    width: 92%;
+    margin: 2vh 4% 1vh;
+}
+
+.top-images img {
+    width: 12%;
+    height: auto;
+    margin: 1%;
+}
+
+.bottom-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 30vh;
+    width: 92%;
+    margin: 1vh 4% 2vh;
+}
+
+.bottom-images img {
+    width: 12%;
+    height: auto;
+    margin: 1%;
+}
+
+.top-images img,
+.bottom-images img {
+    transition: all 0.4s ease-in-out;
+}
+
+.top-images img:hover,
+.bottom-images img:hover {
+    transform: scale(1.4);
+}
+
+.right-half {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 33vh;
     width: 50%;
-    margin: 0 auto 0 calc(50% - 200px);
+    margin-right: 15%;
+}
+
+.left-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 33vh;
+    width: 50%;
+    margin-left: 15%;
+}
+
+.left-half img {
+    width: 60%;
+    height: auto;
+    margin: 1%;
+    transition: all 0.4s ease-in-out;
+}
+
+.left-half img:hover {
+    transform: translateX(-10%);
 }
 
 h1 {
@@ -58,6 +131,11 @@ input[type='submit'] {
     padding: 0.5rem 2rem;
     font-size: 12px;
     cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+input[type='submit']:hover {
+    transform: translateX(-5%);
 }
 
 p {
