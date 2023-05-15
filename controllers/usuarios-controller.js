@@ -115,6 +115,10 @@ function updateUsuario(req,res){
         });
 }
 
+function login(req,res){
+    
+}
+
 module.exports = {
-    findAllUsuarios, createUsuario, findUsuario, deleteUsuario, updateUsuario
+    findAllUsuarios, createUsuario, findUsuario, deleteUsuario, updateUsuario, login
 };

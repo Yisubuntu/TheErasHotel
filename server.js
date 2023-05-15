@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 //Crear server
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000; 
 
 //Conexión a la BD
 mongoose.connect(process.env.DATABASE_URL_CLOUD, {useNewUrlParser: true});
