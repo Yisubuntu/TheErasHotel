@@ -53,8 +53,8 @@ function findHabitaciones(req,res){
             });
         }else{
             res.status(400).send({
-                error: false,
-                message: "Error en el servidor",
+                error: true,
+                message: "Habitaciones no encontradas",
                 code: 20,
             });
         }

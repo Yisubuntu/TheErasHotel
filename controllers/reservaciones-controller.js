@@ -22,48 +22,66 @@ function findAllReservaciones(req, res){
     );
 }
 
-function createReservacion(req, res){
+function createReservacion(req, res) {
     console.log("\nCreando reservacion...");
     console.log(req.body);
-
+  
     const fechaInicio = new Date(req.body.fecha_inicio);
     const fechaFin = new Date(req.body.fecha_fin);
-
-    if(fechaInicio >= fechaFin) {
-        return res.status(400).json({
-            error: true,
-            message: "La fecha de inicio debe ser menor a la fecha de fin",
-            code: 0,
-        });
+  
+    if (fechaInicio >= fechaFin) {
+      return res.status(400).json({
+        error: true,
+        message: "La fecha de inicio debe ser menor a la fecha de fin",
+        code: 0,
+      });
     }
-
-    let reservacion = new Reservacion({
-        id: req.body.id,
-        piso: req.body.piso,
-        habitacion: req.body.habitacion,
-        titular: req.body.titular,
-        fecha_inicio: fechaInicio,
-        fecha_fin: fechaFin
-    });
-
-    reservacion
-        .save(reservacion)
-        .then((data) => {
-            res.status(200).send({
-                error: false,
-                message: "Reserva creada",
-                code: 20,
-                data: data,
-            });
-        } )
-        .catch((error) =>{
-            res.status(500).send({
-                error: true,
-                message: "Error en el servidor",
-                code: 0,
-            });
+  
+    // Obtener el siguiente ID disponible
+    Reservacion.find({}, { id: 1 }).sort({ id: 1 })
+      .then((reservaciones) => {
+        const ids = reservaciones.map((reservacion) => reservacion.id);
+        let nextId = 1;
+  
+        while (ids.includes(nextId)) {
+          nextId++;
+        }
+  
+        let reservacion = new Reservacion({
+          id: nextId,
+          piso: req.body.piso,
+          habitacion: req.body.habitacion,
+          titular: req.body.titular,
+          fecha_inicio: fechaInicio,
+          fecha_fin: fechaFin,
         });
-}
+  
+        reservacion
+          .save()
+          .then((data) => {
+            res.status(200).send({
+              error: false,
+              message: "Reservación creada",
+              code: 20,
+              data: data,
+            });
+          })
+          .catch((error) => {
+            res.status(500).send({
+              error: true,
+              message: "Error en el servidor",
+              code: 0,
+            });
+          });
+      })
+      .catch((error) => {
+        res.status(500).send({
+          error: true,
+          message: "Error en el servidor",
+          code: 0,
+        });
+      });
+  }
 
 function findReservacion(req,res){
     const id = req.params.id;
