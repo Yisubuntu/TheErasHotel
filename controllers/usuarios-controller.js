@@ -49,28 +49,37 @@ function createUsuario(req, res){
     
 }
 
-function loginUsuario(req,res){
-    const email=req.body.email, pass=req.body.password;
+function loginUsuario(req, res) {
+    const email = req.body.email;
+    const pass = req.body.password;
     console.log("\nIniciando sesion con campos provistos...");
-
-    Usuario.findOne($and[{email:email},{password:pass}])
-    .then((data) => {
-        if(data){
-            res.status(200).send({
-                error: false,
-                message: "Inicio de sesion exitoso",
-                code: 20,
-                data: data,
-            });
-        }else{
-            res.status(400).send({
-                error: false,
-                message: "Datos erroneos",
-                code: 20,
-            });
+  
+    Usuario.findOne({ $and: [{ email: email }, { password: pass }] })
+      .then((data) => {
+        if (data) {
+          res.status(200).send({
+            error: false,
+            message: "Inicio de sesión exitoso",
+            code: 20,
+            data: data,
+          });
+        } else {
+          res.status(400).send({
+            error: true,
+            message: "Datos erróneos",
+            code: 20,
+          });
         }
-    })
-}
+      })
+      .catch((error) => {
+        // Manejo de errores
+        res.status(500).send({
+          error: true,
+          message: "Error en el servidor",
+          code: 500,
+        });
+      });
+  }
 
 module.exports = {
     createUsuario, loginUsuario
