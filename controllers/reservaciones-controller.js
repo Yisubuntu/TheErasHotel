@@ -164,7 +164,7 @@ function findDisponibilidad(req,res){
         }else{
             console.log("\nLa habitacion "+hab+" no esta disponible para reservar durante el intervalo dado");
             res.send({
-                error: false,
+                error: true,
                 message: "Habitacion ocupada durante el intervalo dado",
                 code: 20,
                 data: data,
