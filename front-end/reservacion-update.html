@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Editar Reservación</title>
+    <title>The Eras Hotel: Editar Reservación</title>
     <script>
         var urlParams = new URLSearchParams(window.location.search);
         var id = urlParams.get("id");
@@ -12,6 +12,7 @@
             const form = document.querySelector("form");
             const pisoInput = document.querySelector("#piso");
             const habitacionInput = document.querySelector("#habitacion");
+            const titularInput = document.querySelector("#titular");
             const fechaInicioInput = document.querySelector("#fechaInicio");
             const fechaFinInput = document.querySelector("#fechaFin");
 
@@ -22,6 +23,7 @@
                     // Llenar los valores originales en los campos del formulario
                     pisoInput.value = reservacion.piso;
                     habitacionInput.value = reservacion.habitacion;
+                    titularInput.value = reservacion.titular;
                     fechaInicioInput.value = reservacion.fecha_inicio;
                     fechaFinInput.value = reservacion.fecha_fin;
                 })
@@ -85,6 +87,10 @@
         <div>
             <label for="habitacion">Habitación</label>
             <input type="text" id="habitacion" name="habitacion" value="" disabled>
+        </div>
+        <div>
+            <label for="titular">Titular</label>
+            <input type="text" id="titular" name="titular" value="" disabled>
         </div>
         <div>
             <label for="fechaInicio">Fecha de Inicio</label>

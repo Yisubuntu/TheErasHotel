@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Reservas de Hotel</title>
+    <title>The Eras Hotel: Reservaciones</title>
   </head>
   <body>
     <iframe src="nav-bar.html"></iframe>
@@ -13,6 +13,7 @@
           <th>ID</th>
           <th>Piso</th>
           <th>Habitación</th>
+          <th>Titular</th>
           <th>Fecha de Inicio</th>
           <th>Fecha de Fin</th>
           <th>      </th>
@@ -60,6 +61,7 @@
                       <td>${reservacion.id}</td>
                       <td>${reservacion.piso}</td>
                       <td>${reservacion.habitacion}</td>
+                      <td>${reservacion.titular}</td>
                       <td>${fechaInicio}</td>
                       <td>${fechaFin}</td>
                       <td><a href="reservacion-update.html?id=${reservacion.id}"> <span class="register-link">Editar</span> </a></td>

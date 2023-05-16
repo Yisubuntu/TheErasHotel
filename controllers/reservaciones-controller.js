@@ -41,6 +41,7 @@ function createReservacion(req, res){
         id: req.body.id,
         piso: req.body.piso,
         habitacion: req.body.habitacion,
+        titular: req.body.titular,
         fecha_inicio: fechaInicio,
         fecha_fin: fechaFin
     });
