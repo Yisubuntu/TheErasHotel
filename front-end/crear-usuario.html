@@ -20,11 +20,11 @@
             <img src="images/logo.png" alt="The Eras Hotel logo">
         </div>
         <div class="right-half">
-            <form>
-                <input type="text" name="name" placeholder="Nombre completo">
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Contraseña">
-                <input type="password" name="password" placeholder="Confirmar contraseña">
+            <form id="registration-form">
+                <input type="text" id="name" name="name" placeholder="Nombre completo">
+                <input type="email" id="email" name="email" placeholder="Email">
+                <input type="password" id="password" name="password" placeholder="Contraseña">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña">
                 <input type="submit" value="Crear cuenta">
                 <p>
                     ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a>
@@ -39,6 +39,8 @@
         <img src="images/eras/evermore.png" alt="Red">
         <img src="images/eras/midnights.png" alt="1989">
     </div>
+
+    <script src="logic/crear-usuario-logic.js"></script>
 </body>
 
 </html>
