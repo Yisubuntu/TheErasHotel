@@ -18,27 +18,33 @@
     </ul>
   </nav>
   <br><br><br><br>
-  <h1>Consulta Disponibilidad</h1>
-  <h2>Selecciona la habitación y proporciona las fechas de inicio y fin de tu reservación</h2>
-  <form>
-    <div>
-      <label for="piso">Elige un Piso</label>
-      <select id="piso" name="piso"></select>
+  <div class="container">
+    <div class="left-half">
+      <img src="images/eras-poster.jpg" alt="Eras Poster">
     </div>
-    <div>
-      <label for="habitacion">Selecciona una Habitación</label>
-      <select id="habitacion" name="habitacion" disabled></select>
+    <div class="right-half">
+      <h1>Consulta Disponibilidad</h1>
+      <h3>Selecciona la habitación y proporciona las fechas de inicio y fin de tu reservación</h2><br>
+        <form>
+          <div>
+            <label for="piso">Elige un Piso</label>
+            <select id="piso" name="piso"></select>
+          </div><br>
+          <div>
+            <label for="habitacion">Selecciona una Habitación</label>
+            <select id="habitacion" name="habitacion" disabled></select>
+          </div><br>
+          <div>
+            <label for="fechaInicio">Fecha de Inicio</label>
+            <input type="date" id="fechaInicio" name="fechaInicio" value="">
+          </div><br>
+          <div>
+            <label for="fechaFin">Fecha de Fin</label>
+            <input type="date" id="fechaFin" name="fechaFin" value="">
+          </div><br><br>
+          <button type="submit">Consulta Disponibilidad</button>
+        </form>
     </div>
-    <div>
-      <label for="fechaInicio">Fecha de Inicio</label>
-      <input type="date" id="fechaInicio" name="fechaInicio" value="">
-    </div>
-    <div>
-      <label for="fechaFin">Fecha de Fin</label>
-      <input type="date" id="fechaFin" name="fechaFin" value="">
-    </div>
-    <button type="submit">Consulta Disponibilidad</button>
-  </form>
 </body>
 
 </html>

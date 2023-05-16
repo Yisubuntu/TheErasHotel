@@ -139,6 +139,21 @@ input[type='submit']:hover {
     transform: translateX(-5%);
 }
 
+button[type='submit'] {
+    background-color: #182145;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 2rem;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+button[type='submit']:hover {
+    transform: translateX(-5%);
+}
+
 p {
     color: #182145;
     left: 50%;
@@ -220,4 +235,33 @@ h1 {
 
 tbody {
     text-align: center;
+}
+
+/* update */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.left-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.left-half img {
+    width: 80%;
+    height: auto;
+}
+
+.right-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
 }
