@@ -173,6 +173,7 @@ nav ul {
     justify-content: space-between;
     flex-wrap: nowrap;
     align-items: center;
+    padding: 1px 100px;
 }
 
 nav li {
