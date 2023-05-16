@@ -4,10 +4,24 @@ function findPisos(req, res) {
     console.log("\nEncontrando pisos del hotel");
 
     Habitacion.aggregate([
-        { $group: { _id: "$piso" } }
+        {
+            $group: {
+                _id: "$piso",
+                minNumero: { $min: "$numero" }
+            }
+        },
+        {
+            $sort: { minNumero: 1 }
+        },
+        {
+            $project: {
+                _id: 0,
+                piso: "$_id"
+            }
+        }
     ]).then((data) => {
         if (data) {
-            const pisos = data.map((item) => item._id);
+            const pisos = data.map((item) => item.piso);
             res.status(200).send({
                 error: false,
                 message: "Pisos encontrados",
@@ -39,8 +53,8 @@ function findHabitaciones(req,res){
             });
         }else{
             res.status(400).send({
-                error: false,
-                message: "Error en el servidor",
+                error: true,
+                message: "Habitaciones no encontradas",
                 code: 20,
             });
         }

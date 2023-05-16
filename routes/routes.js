@@ -1,4 +1,5 @@
 const express = require("express");
+const usuariosController = require("../controllers/usuarios-controller");
 const habitacionesController = require("../controllers/habitaciones-controller");
 const reservacionesController = require("../controllers/reservaciones-controller");
 const router = express.Router();
@@ -8,6 +9,10 @@ router.use(express.static("front-end"));
 router.get("/", (req, res) => {
   res.redirect("/login.html");
 });
+
+//Login
+router.post("/register", usuariosController.createUsuario);
+router.put("/login", usuariosController.loginUsuario);
 
 //CRUD
 router.get("/reservaciones", reservacionesController.findAllReservaciones);
