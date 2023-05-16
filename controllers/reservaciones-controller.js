@@ -2,7 +2,6 @@ const Reservacion = require("../models/reservacion");
 
 //CRUD
 
-
 function findAllReservaciones(req, res){
     Reservacion.find().then((reservaciones) => {
         console.log(reservaciones);
@@ -26,12 +25,24 @@ function findAllReservaciones(req, res){
 function createReservacion(req, res){
     console.log("\nCreando reservacion...");
     console.log(req.body);
+
+    const fechaInicio = new Date(req.body.fecha_inicio);
+    const fechaFin = new Date(req.body.fecha_fin);
+
+    if(fechaInicio >= fechaFin) {
+        return res.status(400).json({
+            error: true,
+            message: "La fecha de inicio debe ser menor a la fecha de fin",
+            code: 0,
+        });
+    }
+
     let reservacion = new Reservacion({
         id: req.body.id,
         piso: req.body.piso,
         habitacion: req.body.habitacion,
-        fecha_inicio: req.body.fecha_inicio,
-        fecha_fin: req.body.fecha_fin
+        fecha_inicio: fechaInicio,
+        fecha_fin: fechaFin
     });
 
     reservacion
@@ -39,7 +50,7 @@ function createReservacion(req, res){
         .then((data) => {
             res.status(200).send({
                 error: false,
-                message: "OK",
+                message: "Reserva creada",
                 code: 20,
                 data: data,
             });
@@ -98,7 +109,19 @@ function updateReservacion(req,res){
     const id = req.params.id;
 
     console.log("\nCambiando fecha a la reservacion con id "+id+"...");
-    Reservacion.findOneAndUpdate({id:id},{fecha_inicio:req.body.fecha_inicio, fecha_fin:req.body.fecha_fin})
+
+    const fechaInicio = new Date(req.body.fecha_inicio);
+    const fechaFin = new Date(req.body.fecha_fin);
+
+    if(fechaInicio >= fechaFin) {
+        return res.status(400).json({
+            error: true,
+            message: "La fecha de inicio debe ser menor a la fecha de fin",
+            code: 0,
+        });
+    }
+
+    Reservacion.findOneAndUpdate({id:id},{fecha_inicio:fechaInicio, fecha_fin:fechaFin},{new:true})
         .then((data) => {
             if(!data)
             res
@@ -115,25 +138,33 @@ function updateReservacion(req,res){
             res.status(500).send({message: "Error en el servidor"});
         });
 }
+
 function findDisponibilidad(req,res){
     const hab=req.body.habitacion, f_inicio=req.body.fecha_inicio, f_fin=req.body.fecha_fin;
 
     console.log("\nChecando disponibilidad para habitacion "+hab+"...");
-    Reservacion.findOne({habitacion:hab,$or:[{fecha_fin:{$gt:f_inicio}},{fecha_inicio:{$lt:f_fin}}]})
+    if (f_inicio >= f_fin) {
+        return res.status(400).json({
+            error:true,
+            message: "La fecha de inicio debe ser anterior a la fecha de fin",
+            code: 0,
+        });
+    }
+    Reservacion.findOne({habitacion:hab,$and:[{fecha_fin:{$gt:f_inicio}},{fecha_inicio:{$lt:f_fin}}]})
     .then((data) => {
         if(!data){
             console.log("\nLa habitacion "+hab+" esta disponible para reservar en el intervalo dado");
             res.status(200)
             .send({
                 error: false,
-                message: "OK",
+                message: "Habitacion disponible durante el intervalo dado",
                 code: 20,
             });
         }else{
             console.log("\nLa habitacion "+hab+" no esta disponible para reservar durante el intervalo dado");
             res.send({
                 error: false,
-                message: "Habitacion ocupada para el intervalo dado",
+                message: "Habitacion ocupada durante el intervalo dado",
                 code: 20,
                 data: data,
             });
