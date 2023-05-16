@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>The Eras Hotel: Consulta Disponibilidad</title>
-    <script src="logic/reservacion-disponibilidad-logic.js"></script>
-  </head>
-  <body>
-    <iframe src="nav-bar.html"></iframe>
-    <h1>Consulta Disponibilidad</h1>
-    <h2>Selecciona la habitación y proporciona las fechas de inicio y fin de tu reservación</h2>
-    <form>
-        <div>
-            <label for="piso">Elige un Piso</label>
-            <select id="piso" name="piso"></select>
-        </div>
-        <div>
-            <label for="habitacion">Selecciona una Habitación</label>
-            <select id="habitacion" name="habitacion" disabled></select>
-        </div>
-        <div>
-            <label for="fechaInicio">Fecha de Inicio</label>
-            <input type="date" id="fechaInicio" name="fechaInicio" value="">
-        </div>
-        <div>
-            <label for="fechaFin">Fecha de Fin</label>
-            <input type="date" id="fechaFin" name="fechaFin" value="">
-        </div>
-        <button type="submit">Consulta Disponibilidad</button>
-    </form>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Eras Hotel: Consulta Disponibilidad</title>
+  <script src="logic/reservacion-disponibilidad-logic.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="reservaciones.html" target="_top"><img src="images/logo.png" alt="Logo"></a></li>
+      <li><a class="section" href="reservaciones.html" target="_top">Reservaciones</a></li>
+      <li><a class="section" href="reservacion-disponibilidad.html" target="_top">Consulta Disponibilidad</a></li>
+      <li><a class="section" href="login.html" target="_top">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+  <br><br><br><br>
+  <h1>Consulta Disponibilidad</h1>
+  <h2>Selecciona la habitación y proporciona las fechas de inicio y fin de tu reservación</h2>
+  <form>
+    <div>
+      <label for="piso">Elige un Piso</label>
+      <select id="piso" name="piso"></select>
+    </div>
+    <div>
+      <label for="habitacion">Selecciona una Habitación</label>
+      <select id="habitacion" name="habitacion" disabled></select>
+    </div>
+    <div>
+      <label for="fechaInicio">Fecha de Inicio</label>
+      <input type="date" id="fechaInicio" name="fechaInicio" value="">
+    </div>
+    <div>
+      <label for="fechaFin">Fecha de Fin</label>
+      <input type="date" id="fechaFin" name="fechaFin" value="">
+    </div>
+    <button type="submit">Consulta Disponibilidad</button>
+  </form>
+</body>
+
 </html>
