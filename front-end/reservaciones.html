@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>The Eras Hotel: Reservaciones</title>
-  </head>
-  <body>
-    <iframe src="nav-bar.html"></iframe>
-    <h1>Reservas de Hotel</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Piso</th>
-          <th>Habitación</th>
-          <th>Titular</th>
-          <th>Fecha de Inicio</th>
-          <th>Fecha de Fin</th>
-          <th>      </th>
-          <th>         </th>
-        </tr>
-      </thead>
-      <tbody id="reservaciones">
-      </tbody>
-    </table>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="logic/reservaciones-logic.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>The Eras Hotel: Reservaciones</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="reservaciones.html" target="_top"><img src="images/logo.png" alt="Logo"></a></li>
+      <li><a class="section" href="reservaciones.html" target="_top">Reservaciones</a></li>
+      <li><a class="section" href="reservacion-disponibilidad.html" target="_top">Consulta Disponibilidad</a></li>
+      <li><a class="section" href="login.html" target="_top">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+  <br><br><br><br>
+  <h1>Reservas de Hotel</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Piso</th>
+        <th>Habitación</th>
+        <th>Titular</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Fin</th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody id="reservaciones">
+    </tbody>
+  </table>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="logic/reservaciones-logic.js"></script>
+</body>
+
 </html>
