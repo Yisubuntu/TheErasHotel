@@ -161,7 +161,6 @@ a:hover {
 
 /* navigation bar */
 nav {
-    background-color: #182145;
     height: 60px;
 }
 
@@ -182,7 +181,7 @@ nav li {
 
 nav li a {
     display: inline-block;
-    color: #fff;
+    color: #182145;
     padding: 20px;
     text-decoration: none;
     font-size: 16px;
@@ -190,8 +189,13 @@ nav li a {
     margin-bottom: 5px;
 }
 
-nav li a:hover {
-    background-color: #fff;
-    color: #182145;
+nav li a.section:hover {
+    background-color: #182145;
+    color: #fff;
     border-radius: 5px;
+}
+
+nav img {
+    height: 60px;
+    width: auto;
 }
