@@ -158,3 +158,39 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* navigation bar */
+nav {
+    background-color: #182145;
+    height: 60px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    display: inline-block;
+    color: #fff;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+nav li a:hover {
+    background-color: #fff;
+    color: #182145;
+    border-radius: 5px;
+}
